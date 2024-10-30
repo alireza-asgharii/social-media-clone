@@ -1,0 +1,7 @@
+  {
+    "name": "social-media-app",
+    "dockerComposeFile": "./compose.yml",
+    "service": "social-media-app",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose"
+  }

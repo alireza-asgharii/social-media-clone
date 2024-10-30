@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  social-media-app:
+    image: pnpm:20.15.1-alpine-git
+    container_name: social-media-app
+    volumes:
+      - ..:/app:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
