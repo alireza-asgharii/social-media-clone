@@ -1,12 +1,12 @@
-import './App.css'
+import "./App.css";
+import Router from "./router/Router";
 
 function App() {
-
   return (
-    <>
-      app
-    </>
-  )
+    <main className="flex h-screen">
+      <Router />
+    </main>
+  );
 }
 
-export default App
+export default App;
