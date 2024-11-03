@@ -6,7 +6,7 @@ const AuthLayout = () => {
   if (isAuthenticated) return <Navigate to="/" />;
   return (
     <>
-      <section className="flex flex-1 justify-center items-center flex-col py-10 overflow-y-auto">
+      <section className="flex flex-1 justify-center items-center flex-col py-10 overflow-y-auto [&::-webkit-scrollbar]:w-0">
         <Outlet />
       </section>
       <img
