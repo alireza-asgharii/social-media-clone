@@ -22,7 +22,7 @@ const LeftSidebar = () => {
   return (
     <nav className="leftsidebar">
       <div className="flex flex-col gap-3">
-        <Link to="/" className="flex gap-3 items-center">
+        <Link to="/" className="flex items-center gap-3">
           <img
             src="/assets/images/logo.svg"
             alt="logo"
@@ -30,17 +30,17 @@ const LeftSidebar = () => {
             height={36}
           />
         </Link>
-        <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
+        <Link to={`/profile/${user.id}`} className="flex items-center gap-3">
           {user.imageUrl && (
             <img
               src={user.imageUrl}
               alt="profile"
-              className="w-8 h-8 rounded-full"
+              className="h-8 w-8 rounded-full"
             />
           )}
 
           {!user.imageUrl && (
-            <span className="w-8 h-8 flex-center uppercase bg-purple-500 inline-block rounded-full">
+            <span className="flex-center inline-block h-8 w-8 rounded-full bg-purple-500 uppercase">
               {user.name[0]}
             </span>
           )}
@@ -56,13 +56,14 @@ const LeftSidebar = () => {
 
             return (
               <li
+                key={link.label}
                 className={`leftsidebar-link group ${
                   isActive ? "bg-primary-500" : ""
                 }`}
               >
                 <NavLink
                   to={link.route}
-                  className=" flex gap-4 items-center p-4"
+                  className="flex items-center gap-4 p-4"
                 >
                   <img
                     src={link.imgURL}
