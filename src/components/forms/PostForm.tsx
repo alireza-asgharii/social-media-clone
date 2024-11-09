@@ -24,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../shared/Spinner";
 
 type PostFormProps = {
-  post: Models.Document;
+  post?: Models.Document;
 };
 
 const PostForm = ({ post }: PostFormProps) => {
