@@ -17,7 +17,10 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { useCreatePost } from "../../lib/react-query/queriesAndMutation";
+import {
+  useCreatePost,
+  useUpdatePost,
+} from "../../lib/react-query/queriesAndMutation";
 import { useUserContext } from "../../context/AuthContext";
 import { toast } from "../../hooks/use-toast";
 import { useNavigate } from "react-router-dom";
@@ -25,13 +28,18 @@ import Spinner from "../shared/Spinner";
 
 type PostFormProps = {
   post?: Models.Document;
+  action?: "Update" | "Create";
 };
 
-const PostForm = ({ post }: PostFormProps) => {
-  const { mutateAsync: createPost, isPending: isLoadingCreate } =
-    useCreatePost();
+const PostForm = ({ post, action }: PostFormProps) => {
   const { user } = useUserContext();
   const navigate = useNavigate();
+
+  const { mutateAsync: createPost, isPending: isLoadingCreate } =
+    useCreatePost();
+
+  const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
+    useUpdatePost();
 
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -44,6 +52,19 @@ const PostForm = ({ post }: PostFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
+    if (post && action === "Update") {
+      const updatedPost = await updatePost({
+        ...values,
+        postId: post.$id,
+        imageId: post?.imageId,
+        imageUrl: post?.imageUrl,
+      });
+
+      if (!updatedPost) return toast({ title: "Please try again!" });
+
+      return navigate(`/posts/${post.$id}`);
+    }
+
     const newPost = await createPost(
       {
         ...values,
@@ -141,10 +162,11 @@ const PostForm = ({ post }: PostFormProps) => {
           </Button>
           <Button
             type="submit"
-            className="shad-button_primary whitespace-nowrap"
+            className="shad-button_primary whitespace-nowrap disabled:cursor-not-allowed"
+            disabled={isLoadingCreate || isLoadingUpdate}
           >
-            {isLoadingCreate && <Spinner />}
-            Submit
+            {(isLoadingCreate || isLoadingUpdate) && <Spinner />}
+            {action} Post
           </Button>
         </div>
       </form>
