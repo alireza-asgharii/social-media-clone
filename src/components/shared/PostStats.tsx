@@ -11,7 +11,7 @@ import {
 } from "../../lib/react-query/queriesAndMutation";
 
 type props = {
-  post: Models.Document;
+  post?: Models.Document;
   userId: string;
 };
 
@@ -30,7 +30,7 @@ const PostStats = ({ post, userId }: props) => {
   const { data: currentUser } = useGetCurrentUser();
 
   const savedPostRecord = currentUser?.save.find(
-    (record: Models.Document) => record?.post.$id === post.$id,
+    (record: Models.Document) => record?.post.$id === post?.$id,
   );
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const PostStats = ({ post, userId }: props) => {
     }
 
     setLikes(newLikes);
-    likePost({ likesArray: newLikes, postId: post?.$id });
+    likePost({ likesArray: newLikes, postId: post?.$id ?? "" });
   };
 
   const handleSavePost = (e: React.MouseEvent) => {
@@ -61,7 +61,7 @@ const PostStats = ({ post, userId }: props) => {
       deleteSavePost(savedPostRecord.$id);
     } else {
       setIsSaved(true);
-      savePost({ postId: post.$id, userId });
+      savePost({ postId: post?.$id ?? "", userId });
     }
   };
 
