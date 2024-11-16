@@ -66,8 +66,8 @@ const PostStats = ({ post, userId }: props) => {
   };
 
   return (
-    <div className="z-20 flex items-center justify-between">
-      <div className="flex gap-2">
+    <div className="z-20 flex items-center justify-between gap-3">
+      <div className="flex gap-1">
         <img
           src={`${checkIsLiked(likes, userId) ? "/assets/icons/liked.svg" : "/assets/icons/like.svg"}`}
           alt="like"
