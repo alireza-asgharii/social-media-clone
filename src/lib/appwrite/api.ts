@@ -398,7 +398,7 @@ export async function searchPosts(searchterm: string) {
       [Query.search("caption", searchterm)],
     );
 
-    if (posts) throw Error;
+    if (!posts) throw Error;
 
     return posts;
   } catch (error) {
