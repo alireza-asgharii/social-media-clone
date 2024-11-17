@@ -1,18 +1,47 @@
-import { Link, useParams } from "react-router-dom";
-import { useGetPostById } from "../../lib/react-query/queriesAndMutation";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  useDeletePost,
+  useGetPostById,
+} from "../../lib/react-query/queriesAndMutation";
 import Spiner from "../../components/shared/Spinner";
 import DefaultProfile from "../../components/shared/DefaultProfile";
 import { timeAgo } from "../../lib/utils";
 import { useUserContext } from "../../context/AuthContext";
 import { Button } from "../../components/ui/button";
 import PostStats from "../../components/shared/PostStats";
+import { toast } from "../../hooks/use-toast";
+
+import AlertModal from "../../components/shared/AlertModal";
+import { useModal } from "../../context/ModalContext";
 
 const PostDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-  const { data: post, isPending } = useGetPostById(id!);
   const { user } = useUserContext();
 
-  const handleDeletePost = () => {};
+  const { openModal } = useModal();
+
+  const { mutate: deletePost, isPending: isDeletePostLoading } =
+    useDeletePost();
+  const { data: post, isPending } = useGetPostById(id!);
+
+  const handleDeletePost = () => {
+    openModal(
+      "Do you want to delete the post?",
+      "This will make the post unavailable.",
+      () =>
+        deletePost(
+          { postId: post?.$id!, imageId: post?.imageId },
+          {
+            onSuccess: () => {
+              toast({ title: "Delete post successfully" });
+              navigate("/");
+            },
+          },
+        ),
+      "Delete",
+    );
+  };
 
   return (
     <div className="post_details-container">
@@ -70,6 +99,7 @@ const PostDetails = () => {
                   onClick={handleDeletePost}
                   variant="ghost"
                   className={`ghost_details-delete_btn ${user?.id !== post?.creator.$id && "hidden"}`}
+                  disabled={isDeletePostLoading}
                 >
                   <img
                     src="/assets/icons/delete.svg"
@@ -77,7 +107,9 @@ const PostDetails = () => {
                     width={18}
                     height={18}
                   />
+                  {isDeletePostLoading && <Spiner />}
                 </Button>
+                <AlertModal />
               </div>
             </div>
 

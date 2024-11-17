@@ -1,6 +1,7 @@
 import "./App.css";
 import Router from "./router/Router";
 import { Toaster } from "./components/ui/toaster";
+import AlertModal from "./components/shared/AlertModal";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Router />
       </main>
       <Toaster />
+      <AlertModal />
     </>
   );
 }
