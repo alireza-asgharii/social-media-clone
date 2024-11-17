@@ -11,7 +11,6 @@ import { Button } from "../../components/ui/button";
 import PostStats from "../../components/shared/PostStats";
 import { toast } from "../../hooks/use-toast";
 
-import AlertModal from "../../components/shared/AlertModal";
 import { useModal } from "../../context/ModalContext";
 
 const PostDetails = () => {
@@ -109,7 +108,6 @@ const PostDetails = () => {
                   />
                   {isDeletePostLoading && <Spiner />}
                 </Button>
-                <AlertModal />
               </div>
             </div>
 
