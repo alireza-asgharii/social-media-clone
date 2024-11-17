@@ -16,7 +16,7 @@ const AlertModal = () => {
   return (
     <>
       <AlertDialog>
-        <AlertDialogTrigger id="modal">Open</AlertDialogTrigger>
+        <AlertDialogTrigger id="modal" className="hidden"></AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>{title ?? "Default title!"}</AlertDialogTitle>
