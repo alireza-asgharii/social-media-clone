@@ -22,6 +22,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSignInAccount } from "../../lib/react-query/queriesAndMutation";
 import { useUserContext } from "../../context/AuthContext";
 import Logo from "../../components/shared/Logo";
+import Spiner from "../../components/shared/Spinner";
 
 const SigninForm = () => {
   const { toast } = useToast();
@@ -107,7 +108,7 @@ const SigninForm = () => {
           <Button type="submit" className="shad-button_primary w-full">
             {signInPending ? (
               <div className="flex-center gap-2">
-                <Loader /> Loading...
+                <Spiner /> Loading...
               </div>
             ) : (
               "Sign in"

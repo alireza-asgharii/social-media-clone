@@ -25,6 +25,7 @@ import {
 } from "../../lib/react-query/queriesAndMutation";
 import { useUserContext } from "../../context/AuthContext";
 import Logo from "../../components/shared/Logo";
+import Spiner from "../../components/shared/Spinner";
 
 const SignupForm = () => {
   const { toast } = useToast();
@@ -148,7 +149,7 @@ const SignupForm = () => {
           <Button type="submit" className="shad-button_primary w-full">
             {createPending || signInPending ? (
               <div className="flex-center gap-2">
-                <Loader /> Loading...
+                <Spiner /> Loading...
               </div>
             ) : (
               "Sign up"
