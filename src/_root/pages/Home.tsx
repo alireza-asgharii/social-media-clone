@@ -1,7 +1,11 @@
 import { Models } from "appwrite";
 import Spiner from "../../components/shared/Spinner";
-import { useGetRecentPosts } from "../../lib/react-query/queriesAndMutation";
+import {
+  useGetRecentPosts,
+  useGetUsers,
+} from "../../lib/react-query/queriesAndMutation";
 import PostCard from "../../components/shared/PostCard";
+import Creator from "../../components/shared/Creator";
 
 const Home = () => {
   const {
@@ -9,6 +13,8 @@ const Home = () => {
     isPending: isPostsLoading,
     // isError: isPostsError,
   } = useGetRecentPosts();
+
+  const { data: users, isPending: isLoadingUsers } = useGetUsers(10);
 
   return (
     <div className="flex flex-1">
@@ -29,6 +35,17 @@ const Home = () => {
             </ul>
           )}
         </div>
+      </div>
+
+      <div className="home-creators">
+        <h2 className="h3-bold md:h2-bold w-full text-left">Top Creator</h2>
+        {isLoadingUsers ? (
+          <Spiner />
+        ) : (
+          <div className="grid grid-cols-2 gap-4 pt-10">
+            {users?.documents?.map((creator) => <Creator creator={creator} />)}
+          </div>
+        )}
       </div>
     </div>
   );
