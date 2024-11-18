@@ -1,18 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useUserContext } from "../context/AuthContext";
 
 const AuthLayout = () => {
-  const isAuthenticated = false;
+  const { isAuthenticated } = useUserContext();
 
   if (isAuthenticated) return <Navigate to="/" />;
   return (
     <>
-      <section className="flex flex-1 justify-center items-center flex-col py-10 overflow-y-auto [&::-webkit-scrollbar]:w-0">
+      <section className="flex flex-1 flex-col items-center justify-center overflow-y-auto py-10 [&::-webkit-scrollbar]:w-0">
         <Outlet />
       </section>
       <img
-        src="/assets/images/side-img.svg"
+        src="/assets/images/grid-login.png"
         alt="logo"
-        className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
+        className="hidden h-screen w-1/2 bg-no-repeat object-cover xl:block"
       />
     </>
   );
