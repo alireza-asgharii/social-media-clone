@@ -10,16 +10,27 @@ import useDebounce from "../../hooks/useDebounce";
 import Spiner from "../../components/shared/Spinner";
 
 import { useInView } from "react-intersection-observer";
+import ErrorProvider from "../../providers/ErrorProvider";
 
 const Explore = () => {
   const [searchValue, setSearchValue] = useState("");
   const { ref, inView } = useInView();
 
-  const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();
+  const {
+    data: posts,
+    fetchNextPage,
+    hasNextPage,
+    isError: isPostsError,
+    refetch: refetchPosts,
+    error: postsError,
+  } = useGetPosts();
 
   const debouncedValue = useDebounce(searchValue, 500);
-  const { data: searchPosts, isFetching: isSearchFetching } =
-    useSearchPosts(debouncedValue);
+  const {
+    data: searchPosts,
+    isFetching: isSearchFetching,
+    isError: isSearchError,
+  } = useSearchPosts(debouncedValue);
 
   useEffect(() => {
     if (inView && !searchValue) fetchNextPage();
@@ -71,16 +82,24 @@ const Explore = () => {
 
       <div className="flex w-full max-w-5xl flex-wrap gap-9">
         {shouldShowSearchResults ? (
-          <SearchResults
-            isSearchFetching={isSearchFetching}
-            searchPosts={searchPosts?.documents}
-          />
+          <ErrorProvider error={isSearchError}>
+            <SearchResults
+              isSearchFetching={isSearchFetching}
+              searchPosts={searchPosts?.documents}
+            />
+          </ErrorProvider>
         ) : shouldShowPosts ? (
           <p className="mt-10 w-full text-center text-light-4">End of posts</p>
         ) : (
-          posts.pages.map((item, index) => (
-            <GridPostList key={`page-${index}`} posts={item?.documents} />
-          ))
+          <ErrorProvider
+            error={isPostsError}
+            refetch={refetchPosts}
+            message={postsError?.message}
+          >
+            {posts.pages.map((item, index) => (
+              <GridPostList key={`page-${index}`} posts={item?.documents} />
+            ))}
+          </ErrorProvider>
         )}
       </div>
 

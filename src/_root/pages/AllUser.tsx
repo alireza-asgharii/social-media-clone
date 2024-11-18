@@ -2,11 +2,18 @@ import { useToast } from "../../hooks/use-toast";
 import { useGetUsers } from "../../lib/react-query/queriesAndMutation";
 import Creator from "../../components/shared/Creator";
 import Spiner from "../../components/shared/Spinner";
+import ErrorProvider from "../../providers/ErrorProvider";
 
 const AllUsers = () => {
   const { toast } = useToast();
 
-  const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers();
+  const {
+    data: creators,
+    isLoading,
+    isError: isErrorCreators,
+    refetch,
+    isRefetching,
+  } = useGetUsers();
 
   if (isErrorCreators) {
     toast({ title: "Something went wrong." });
@@ -21,13 +28,19 @@ const AllUsers = () => {
         {isLoading && !creators ? (
           <Spiner />
         ) : (
-          <ul className="user-grid">
-            {creators?.documents.map((creator) => (
-              <li key={creator?.$id} className="w-full min-w-[200px] flex-1">
-                <Creator creator={creator} />
-              </li>
-            ))}
-          </ul>
+          <ErrorProvider
+            error={isErrorCreators}
+            refetch={refetch}
+            isRefetching={isRefetching}
+          >
+            <ul className="user-grid">
+              {creators?.documents.map((creator) => (
+                <li key={creator?.$id} className="w-full min-w-[200px] flex-1">
+                  <Creator creator={creator} />
+                </li>
+              ))}
+            </ul>
+          </ErrorProvider>
         )}
       </div>
     </div>
