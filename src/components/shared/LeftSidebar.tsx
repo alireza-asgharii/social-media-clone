@@ -8,6 +8,7 @@ import { useUserContext } from "../../context/AuthContext";
 
 import { sidebarLinks } from "../../constants";
 import { INavLink } from "../../types";
+import Logo from "./Logo";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
@@ -22,14 +23,7 @@ const LeftSidebar = () => {
   return (
     <nav className="leftsidebar">
       <div className="flex flex-col gap-3">
-        <Link to="/" className="flex items-center gap-3">
-          <img
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={170}
-            height={36}
-          />
-        </Link>
+        <Logo />
         <Link to={`/profile/${user.id}`} className="flex items-center gap-3">
           {user.imageUrl && (
             <img

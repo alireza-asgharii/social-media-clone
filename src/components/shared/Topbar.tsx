@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 
 import { useSignOutAccount } from "../../lib/react-query/queriesAndMutation";
 import { useUserContext } from "../../context/AuthContext";
+import Logo from "./Logo";
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -17,15 +18,8 @@ const Topbar = () => {
 
   return (
     <section className="topbar">
-      <div className="flex-between py-4 px-5">
-        <Link to="/" className="flex gap-3 items-center">
-          <img
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={130}
-            height={325}
-          />
-        </Link>
+      <div className="flex-between px-5 py-4">
+        <Logo />
 
         <div className="flex gap-4">
           <Button
@@ -41,12 +35,12 @@ const Topbar = () => {
               <img
                 src={user.imageUrl}
                 alt="profile"
-                className="w-8 h-8 rounded-full"
+                className="h-8 w-8 rounded-full"
               />
             )}
 
             {!user.imageUrl && (
-              <span className="w-8 h-8 flex-center uppercase bg-purple-500 inline-block rounded-full">
+              <span className="flex-center inline-block h-8 w-8 rounded-full bg-purple-500 uppercase">
                 {user.name[0]}
               </span>
             )}
