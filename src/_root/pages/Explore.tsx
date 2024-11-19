@@ -11,10 +11,13 @@ import Spiner from "../../components/shared/Spinner";
 
 import { useInView } from "react-intersection-observer";
 import ErrorProvider from "../../providers/ErrorProvider";
+import useTitle from "../../hooks/Title";
 
 const Explore = () => {
   const [searchValue, setSearchValue] = useState("");
   const { ref, inView } = useInView();
+
+  useTitle("Explore");
 
   const {
     data: posts,

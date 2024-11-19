@@ -22,6 +22,7 @@ import { useSignInAccount } from "../../lib/react-query/queriesAndMutation";
 import { useUserContext } from "../../context/AuthContext";
 import Logo from "../../components/shared/Logo";
 import Spiner from "../../components/shared/Spinner";
+import useTitle from "../../hooks/Title";
 
 const SigninForm = () => {
   const { toast } = useToast();
@@ -38,6 +39,8 @@ const SigninForm = () => {
       password: "",
     },
   });
+
+  useTitle("Sign in");
 
   async function onSubmit(values: z.infer<typeof SigninValidation>) {
     const session = await signInAccount(

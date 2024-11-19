@@ -12,6 +12,7 @@ import PostStats from "../../components/shared/PostStats";
 import { toast } from "../../hooks/use-toast";
 
 import { useModal } from "../../context/ModalContext";
+import useTitle from "../../hooks/Title";
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const PostDetails = () => {
   const { mutate: deletePost, isPending: isDeletePostLoading } =
     useDeletePost();
   const { data: post, isPending } = useGetPostById(id!);
+
+  useTitle(post?.caption ?? "Post details");
 
   const handleDeletePost = () => {
     openModal(

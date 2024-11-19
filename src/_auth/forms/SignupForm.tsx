@@ -25,6 +25,7 @@ import {
 import { useUserContext } from "../../context/AuthContext";
 import Logo from "../../components/shared/Logo";
 import Spiner from "../../components/shared/Spinner";
+import useTitle from "../../hooks/Title";
 
 const SignupForm = () => {
   const { toast } = useToast();
@@ -45,6 +46,8 @@ const SignupForm = () => {
       password: "",
     },
   });
+
+  useTitle("Sign up");
 
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
     const newUser = await createUserAccount(values, {

@@ -4,9 +4,12 @@ import { useGetCurrentUser } from "../../lib/react-query/queriesAndMutation";
 import Spiner from "../../components/shared/Spinner";
 import GridPostList from "../../components/shared/GridPostList";
 import ErrorProvider from "../../providers/ErrorProvider";
+import useTitle from "../../hooks/Title";
 
 const Saved = () => {
   const { data: currentUser, isError } = useGetCurrentUser();
+
+  useTitle("Saved");
 
   const savePosts = currentUser?.save
     .map((savePost: Models.Document) => ({

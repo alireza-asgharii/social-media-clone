@@ -2,9 +2,11 @@ import { useParams } from "react-router-dom";
 import PostForm from "../../components/forms/PostForm";
 import { useGetPostById } from "../../lib/react-query/queriesAndMutation";
 import Spiner from "../../components/shared/Spinner";
+import useTitle from "../../hooks/Title";
 
 const EditPost = () => {
   const { id } = useParams<{ id: string }>();
+  useTitle("Edit post");
 
   const { data: post, isPending: isPostLoading } = useGetPostById(id!);
 

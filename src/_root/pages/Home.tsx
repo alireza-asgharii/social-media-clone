@@ -7,6 +7,7 @@ import {
 import PostCard from "../../components/shared/PostCard";
 import Creator from "../../components/shared/Creator";
 import ErrorProvider from "../../providers/ErrorProvider";
+import useTitle from "../../hooks/Title";
 
 const Home = () => {
   const {
@@ -26,6 +27,8 @@ const Home = () => {
     refetch: refetchUsers,
     isRefetching: isRefetchingUsers,
   } = useGetUsers(10);
+
+  useTitle("Home page");
 
   return (
     <div className="flex flex-1">

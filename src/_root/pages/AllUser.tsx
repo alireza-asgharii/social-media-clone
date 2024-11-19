@@ -3,9 +3,11 @@ import { useGetUsers } from "../../lib/react-query/queriesAndMutation";
 import Creator from "../../components/shared/Creator";
 import Spiner from "../../components/shared/Spinner";
 import ErrorProvider from "../../providers/ErrorProvider";
+import useTitle from "../../hooks/Title";
 
 const AllUsers = () => {
   const { toast } = useToast();
+  useTitle("Users");
 
   const {
     data: creators,

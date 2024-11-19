@@ -12,6 +12,7 @@ import { Button } from "../../components/ui/button";
 import GridPostList from "../../components/shared/GridPostList";
 import LikedPosts from "./LikedPosts";
 import { useGetUserById } from "../../lib/react-query/queriesAndMutation";
+import useTitle from "../../hooks/Title";
 
 interface StabBlockProps {
   value: string | number;
@@ -29,6 +30,8 @@ const Profile = () => {
   const { id } = useParams();
   const { user } = useUserContext();
   const { pathname } = useLocation();
+
+  useTitle("Profile");
 
   const { data: currentUser } = useGetUserById(id || "");
 

@@ -1,6 +1,8 @@
 import PostForm from "../../components/forms/PostForm";
+import useTitle from "../../hooks/Title";
 
 const CreatePost = () => {
+  useTitle("Create post");
   return (
     <div className="flex flex-1">
       <div className="common-container">
