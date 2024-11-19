@@ -42,19 +42,24 @@ To contribute to this project:
 
 ## 📂 Project Structure
 
-plaintext ```
+## 📂 Project Structure
+
+```plaintext
 src/
-├── components/ # Reusable components
-├── \_auth/ # signin layout
-├── \_root/ # main layout
-├── constants/ # constants files
-├── hooks/ # React hooks (e.g., useQuery, etc.)
-├── utils/ # Helper functions and configurations
-├── context/ # context file
-├── lib/ # libraries
-├── providers/ # app providers
-├── router/ # app routers
-└── main.jsx # Application entry point```
+├── components/       # Reusable components
+├── _auth/            # Sign-in layout
+├── _root/            # Main layout
+├── constants/        # Constants files
+├── hooks/            # React hooks (e.g., useQuery, etc.)
+├── utils/            # Helper functions and configurations
+├── context/          # Context files
+├── lib/              # Libraries
+├── providers/        # App providers
+├── router/           # App routers
+└── main.jsx          # Application entry point
+```
+
+
 
 ## 🧰 Prerequisites
 
