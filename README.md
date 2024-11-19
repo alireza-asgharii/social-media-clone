@@ -1,50 +1,96 @@
-# React + TypeScript + Vite
+# 📸 MiniGram
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MiniGram** is a modern and efficient Instagram clone designed to replicate the core user experience of Instagram. Built with advanced technologies, it provides essential features like user authentication, post and photo uploads, and an explore page to discover diverse content.
 
-Currently, two official plugins are available:
+The user interface of MiniGram is sleek and modern, leveraging libraries like TailwindCSS and ShadcnUI to offer a fast, smooth, and visually appealing experience. This project is perfect for those seeking inspiration from Instagram or looking to learn how to build complex and professional applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **User Authentication**: Secure sign-up and login functionality.
+- **Post Management**: Users can upload and manage their photos and posts.
+- **Explore Page**: Discover new and diverse content.
+- **Modern and Optimized Design**: Offers a seamless and attractive user experience.
+- **Responsive and Fast**: Optimized for all devices.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ✨ Technologies Used
+
+---
+
+- **React.js**: A powerful library for building user interfaces.
+- **Tailwind CSS**: A fast and responsive styling framework.
+- **ShadcnUI**: A library for building modern UI components.
+- **Appwrite**: A backend as a service for managing data and authentication.
+- **React Query**: For managing server-side requests and data.
+- **Docker**: For containerizing the application, making it easier to develop and deploy in consistent environments across different machines.
+
+---
+
+## 🙌 Contributing
+
+---
+
+To contribute to this project:
+
+1.  Fork this repository.
+2.  Create a new branch: `git checkout -b feature-name`
+3.  Commit your changes: `git commit -m "Add feature-name"`
+4.  Submit a pull request to the main repository.
+
+## 📂 Project Structure
+
+## 📂 Project Structure
+
+```plaintext
+src/
+├── components/       # Reusable components
+├── _auth/            # Sign-in layout
+├── _root/            # Main layout
+├── constants/        # Constants files
+├── hooks/            # React hooks (e.g., useQuery, etc.)
+├── utils/            # Helper functions and configurations
+├── context/          # Context files
+├── lib/              # Libraries
+├── providers/        # App providers
+├── router/           # App routers
+└── main.jsx          # Application entry point
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 🧰 Prerequisites
+
+- **pnpm** (preferred package manager)
+- **Docker** (for containerized development and deployment)
+- Access to **Appwrite** project details (for `.env` file)
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+
+First, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/alireza-asgharii/social-media-clone.git
+cd app-name
+pnpm i
+
+### 3. Set up the `.env` file
+
+Create a `.env` file in the root directory and add your **Appwrite** project credentials:
+```
+
+```plaintext
+VITE_APPWRITE_PROJECT_ID=your_project_id
+VITE_APPWRITE_URL=your_appwrite_url
+VITE_APPWRITE_STORAGE_ID=your_storage_id
+VITE_APPWRITE_DATABASE_ID=your_database_id
+VITE_APPWRITE_USER_COLLECTION_ID=your_user_collection_id
+VITE_APPWRITE_POST_COLLECTION_ID=your_post_collection_id
+VITE_APPWRITE_SAVES_COLLECTION_ID=your_saves_collection_id
+
+
 ```
