@@ -50,7 +50,7 @@ src/
 ├── hooks/            # React hooks (e.g., useQuery, etc.)
 ├── utils/            # Helper functions and configurations
 └── main.jsx          # Application entry point
-
+```
 
 ## 🧰 Prerequisites
 
@@ -72,6 +72,7 @@ pnpm i
 ### 3. Set up the `.env` file
 
 Create a `.env` file in the root directory and add your **Appwrite** project credentials:
+```
 
 ```plaintext
 VITE_APPWRITE_PROJECT_ID=your_project_id
