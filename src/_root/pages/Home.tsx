@@ -71,7 +71,7 @@ const Home = () => {
           ) : (
             <div className="grid grid-cols-2 gap-4 pt-10">
               {users?.documents?.map((creator) => (
-                <Creator creator={creator} />
+                <Creator creator={creator} key={creator.$id} />
               ))}
             </div>
           )}
