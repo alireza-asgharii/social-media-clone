@@ -42,7 +42,7 @@ To contribute to this project:
 
 ## 📂 Project Structure
 
-plaintext
+plaintext ```
 src/
 ├── components/ # Reusable components
 ├── \_auth/ # signin layout
@@ -54,7 +54,7 @@ src/
 ├── lib/ # libraries
 ├── providers/ # app providers
 ├── router/ # app routers
-└── main.jsx # Application entry point
+└── main.jsx # Application entry point```
 
 ## 🧰 Prerequisites
 
