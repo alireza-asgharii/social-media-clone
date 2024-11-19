@@ -42,15 +42,19 @@ To contribute to this project:
 
 ## 📂 Project Structure
 
-````plaintext
+plaintext
 src/
-├── components/       # Reusable components
-├── pages/            # Main pages (Profile, Explore, Feed, etc.)
-├── assets/           # Images and styles
-├── hooks/            # React hooks (e.g., useQuery, etc.)
-├── utils/            # Helper functions and configurations
-└── main.jsx          # Application entry point
-```
+├── components/ # Reusable components
+├── \_auth/ # signin layout
+├── \_root/ # main layout
+├── constants/ # constants files
+├── hooks/ # React hooks (e.g., useQuery, etc.)
+├── utils/ # Helper functions and configurations
+├── context/ # context file
+├── lib/ # libraries
+├── providers/ # app providers
+├── router/ # app routers
+└── main.jsx # Application entry point
 
 ## 🧰 Prerequisites
 
@@ -84,4 +88,4 @@ VITE_APPWRITE_POST_COLLECTION_ID=your_post_collection_id
 VITE_APPWRITE_SAVES_COLLECTION_ID=your_saves_collection_id
 
 
-````
+```
