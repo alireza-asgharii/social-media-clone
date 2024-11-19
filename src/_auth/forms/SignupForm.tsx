@@ -15,7 +15,6 @@ import { useToast } from "../../hooks/use-toast";
 
 import { SignupValidation } from "../../lib/validation";
 import { z } from "zod";
-import Loader from "../../components/shared/Loader";
 import { Link, useNavigate } from "react-router-dom";
 
 //react-query
