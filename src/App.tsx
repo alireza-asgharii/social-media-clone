@@ -7,7 +7,6 @@ import Spiner from "./components/shared/Spinner";
 
 function App() {
   const { isLoading } = useUserContext();
-  console.log(isLoading);
 
   if (isLoading)
     return (
